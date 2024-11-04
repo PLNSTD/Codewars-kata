@@ -22,3 +22,8 @@ def descending_order(num):
         output += my_list[i] * pow(10,len(my_list)-i-1)
         
     return output
+
+def descending_order(num):
+    list_string_num = list(str(num))
+    list_string_num.sort(reverse=True)
+    return int(''.join(list_string_num))
