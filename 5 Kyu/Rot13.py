@@ -7,23 +7,12 @@ Please note that using encode is considered cheating.
 '''
 
 def rot13(message):
-    alphabet = []
-    for i in range(26):
-        alphabet.append(chr(ord('a') + i))
-        
-    ciphered = ''
+    output = ''
     for char in message:
-        if ord(char) >= ord('A') and ord(char) <= ord('Z'): 
-            ciphered_char_idx = ord(char) - ord('A') + 13
-            if ciphered_char_idx >= 26:
-                ciphered_char_idx = ciphered_char_idx - 26
-            ciphered += alphabet[ciphered_char_idx].upper()
-        elif ord(char) >= ord('a') and ord(char) <= ord('z'):
-            ciphered_char_idx = ord(char) - ord('a') + 13
-            if ciphered_char_idx >= 26:
-                ciphered_char_idx = ciphered_char_idx - 26
-            ciphered += alphabet[ciphered_char_idx]
+        if char.isalpha():
+            base_letter = ord('a') if char.islower() else ord('A')
+            coded_char = chr((ord(char) - base_letter + 13) % 26 + base_letter)
+            output += coded_char
         else:
-            ciphered += char
-    
-    return ciphered
+            output += char
+    return output
