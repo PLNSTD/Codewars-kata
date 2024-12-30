@@ -32,7 +32,7 @@ def parts_sums(ls):
     partial_sum = sum(ls)
     output.append(partial_sum)
     
-    for idx, num in enumerate(ls):
+    for num in ls:
         partial_sum -= num
         
         output.append(partial_sum)
